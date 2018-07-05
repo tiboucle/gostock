@@ -27,7 +27,7 @@ CREATE TABLE purchases(
 );
 
 CREATE TABLE purchase_details(
-	id				INTEGER PRIMARY KEY,
+	id				INTEGER PRIMARY KEY AUTOINCREMENT,
 	invoice_id		VARCHAR(50),
   	item_sku		VARCHAR(50),
   	price			NUMERIC,
@@ -39,11 +39,13 @@ CREATE TABLE purchase_details(
 	FOREIGN KEY(item_sku) REFERENCES items(sku)
 );
 
-CREATE TABLE purchase_lines(
+CREATE TABLE incoming_items(
 	id 				INTEGER PRIMARY KEY AUTOINCREMENT,
 	invoice_id		VARCHAR(50),
 	item_sku 		VARCHAR(50),
+	note			VARCHAR(100),
 	item_received	INTEGER,
+	time_received	DATETIME
 	created_at		DATETIME DEFAULT CURRENT_TIMESTAMP,
 	updated_at 		DATETIME,
 	deleted_at		DATETIME,
@@ -60,7 +62,7 @@ CREATE TABLE orders(
 );
 
 CREATE TABLE order_details(
-	id 				INTEGER PRIMARY KEY,
+	id 				INTEGER PRIMARY KEY AUTOINCREMENT,
 	invoice_id		VARCHAR(50),
   	item_sku		VARCHAR(50),
   	price			NUMERIC,

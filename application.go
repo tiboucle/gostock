@@ -1,9 +1,13 @@
 package main
 
 import (
-	"./route"
+	"gostock/route"
 )
 
 func main() {
-	route.Run(8090)
+	err := route.Run(8090)
+
+	if err != nil {
+		panic(err)
+	}
 }
